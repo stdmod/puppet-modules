@@ -1,18 +1,18 @@
 Naming Standards for Parameters/Hiera names
+DRAFT 0.0.1
 
-Usage with a class declaration
-
+Usage patterns: With a class declaration
 class { $module:
   $parameter => $value,
 }
 
-class { ‘openssh’:
-  file_template => ‘site/openssh/sshd_config.erb’,
+class { 'openssh':
+  file_template => 'site/openssh/sshd_config.erb',
 }
 
-Usage with Hiera:
-Behavior of: hiera ( ‘module::file_template’ )
 
+Usage patterns: With Hiera
+Behavior of: hiera ( "$module::$parameter" )
 Configured like:
 {
  "openssh::file_template" : site/openssh/sshd_config.erb’,
@@ -85,24 +85,34 @@ Manage Service(s)
 #   automatic services restarts triggered by configuration changes.
 #
 
-Where is needed to manage init scripts:
+Where is needed to manage the service initializion script
+(both the script itself (init, upstart..) and its config file):
 
-# [*initscript_file*]
+# [*init_script_file*]
 #   String. Default: undef.
 #   Path of the initialization script (ie: /etc/init.d/stdmod)
 #
-# [*initscript_file_template*]
+# [*init_script_file_template*]
 #   String. Default: undef.
-#   Sets the path to the template to use as content for init main configuration file
-#   If defined, stdmod main config file has: content => content("$template")
-#   Example: template => 'site/stdmod.conf.erb',
 #
-# [*initscript_file_options_hash*]
+# [*init_script_file_options_hash*]
 #   Hash. Default undef. Needs: 'initscript_file_template'.
 #   An hash of custom options to be used in templates to manage any key pairs of
-#   arbitrary settings. Usually this is implemented to map directly to configuration statements.
-#   Special values MUST be documented in the module.
+#   arbitrary settings.
 #
+# [*init_options_file*]
+#   String. Default: undef.
+#   Path of the config file for initialization script (ie: /etc/default/stdmod)
+#
+# [*init_options_file_template*]
+#   String. Default: undef.
+#
+# [*init_options_file_options_hash*]
+#   Hash. Default undef. Needs: 'initscript_file_template'.
+#   An hash of custom options to be used in templates to manage any key pairs of
+#   arbitrary settings.
+#
+
 
 
 
@@ -186,7 +196,7 @@ Manage any extra configuration file, service or package with a common prefix
 #
 
 
- Manage interoperabilty with 3rd party modules resources 
+ Manage interoperabilty with 3rd party modules resources
 
 # [*class_dependency*]
 #   String. Default: stdmod::dependency
@@ -199,7 +209,7 @@ Manage any extra configuration file, service or package with a common prefix
 #
 
 
-Add extra custom resources related to the class or define 
+Add extra custom resources related to the class or define
 
 # [*class_my*]
 #   String. Default undef.
@@ -342,11 +352,17 @@ Parameters for defines that execute commands
 # [*exec_options_hash*]
 
 
-Generic parameter to manage users creation, where a class or defines needs to create a user
+Generic parameters to manage users creation, where needed
+
+# [*user*]
+# [*user_uid*]
+# [*user_gid*]
+# [*user_groups*]
+# [*user_home*]
 
 # [*user_create*]
+#   Boolean. Default: true
 #   Set to true if you want the module to create the process user of stdmod
-#   (as defined in $logstagh::process_user). Default: true
-#   Note: User is not created when $stdmod::install is package
 #
+
 
