@@ -183,14 +183,20 @@ Manage other common files paths and parameters, where needed
 # [*log_file*]
 # [*log_file_owner*]
 # [*log_file_mode*]
+
 # [*install_script_file*]
+# [*install_script_file_source*]
 # [*install_response_file*]
+# [*install_response_file_source*]
+# [*install_response_file_template*]
+
 # [*init_script_file*]
 # [*init_config_file*]
 
 Samples for specific modules
 # [*hba_file*]
-# [*hba_file*]
+# [*hba_file_template*]
+# 
 
 Manage any extra configuration file, service or package with a common prefix
 (here ‘other_’)
@@ -218,7 +224,7 @@ Manage any extra configuration file, service or package with a common prefix
 #
 
 
- Manage interoperabilty with 3rd party modules resources
+Manage interoperabilty with 3rd party modules resources
 
 # [*class_dependency*]
 #   String. Default: stdmod::dependency
@@ -274,6 +280,8 @@ Manage alternative installation options
 #
 
 Manage monitoring
+# [*class_monitor*]
+
 # [*monitor*]
 #   Set to 'true' to enable monitoring of the services provided by the module
 #   Can be defined also by the (top scope) variables $graylog2_monitor
@@ -282,11 +290,13 @@ Manage monitoring
 # [*monitor_tool*]
 #   Define which tool(s) to use for monitoring
 #
-# [*monitor_target*]
+# [*monitor_host*]
 #   The Ip address or hostname to use as a target for monitoring tools.
 #   Default is the fact $ipaddress
 
 # [*monitor_port*]
+
+# [*monitor_protocol*]
 
 # [*monitor_url*]
 
@@ -298,7 +308,7 @@ Manage monitoring
 
 
 Manage firewalling
-
+# [*class_firewall*]
 #
 # [*firewall*]
 #   Set to 'true' to enable firewalling of the services provided by the module
