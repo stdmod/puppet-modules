@@ -169,6 +169,28 @@ Manage the whole configuration directory
 #   Set it to true when you want to be sure that Puppet manages completely
 #   the configuration directory.
 
+Manage home/data/other (common) module dir paths and parameters where needed
+# [*home_dir*]
+# [*data_dir*]
+# [*data_dir_owner*]
+# [*data_dir_mode*]
+# [*log_dir*]
+# [*bin_dir*]
+# [*lib_dir*]
+# [*confd_dir*]
+
+Manage other common files paths and parameters, where needed
+# [*log_file*]
+# [*log_file_owner*]
+# [*log_file_mode*]
+# [*install_script_file*]
+# [*install_response_file*]
+# [*init_script_file*]
+# [*init_config_file*]
+
+Samples for specific modules
+# [*hba_file*]
+# [*hba_file*]
 
 Manage any extra configuration file, service or package with a common prefix
 (here ‘other_’)
