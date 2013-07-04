@@ -1,14 +1,19 @@
-# Naming Standards for parameters
-# DRAFT 0.0.1
+# Naming Standards for parameters - List - DRAFT 0.0.1
 
 This is a proposal to discuss for a list of parameter names that
 can be used both in classes and defines in a module.
+
 A Standard Module is not required to have all of them, with if some parameters
 are provided that offer the same function, they should be called like these.
 
 Please comment:
-- If the parameter is appropriate
-- The suggested name for the parameter is appropriate
+- If the parameter make sense for you
+- Your suggested name
+
++1 for the choices you agree with
+
+If you want to provide a totally alternative list of names, submit it (on separated file) as a PR.
+
 
 ```
 ## General parameters
