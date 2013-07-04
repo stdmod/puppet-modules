@@ -1,4 +1,5 @@
-# Naming Standards for parameters - List - DRAFT 0.0.1
+## Naming Standards for parameters - List
+DRAFT v. 0.0.1
 
 This is a proposal to discuss for a list of parameter names that
 can be used both in classes and defines in a module.
@@ -14,6 +15,15 @@ Please comment:
 
 If you want to provide a totally alternative list of names, submit it (on separated file) as a PR.
 
+## A list of parameter names based on the managed resource Types
+
+This naming pattern has names that reflect the resource type managed by the class or define and the relevant parameters.
+
+Generally no special prefix is needed for a class or define main configuration file, package or service.
+
+For additional resources a prefix is used. For common alternative resources naming standard are set too.
+
+The are some exceptions to the plain [prefix_]resource_parameter pattern that should be evaluated with care.
 
 ```
 ## General parameters
