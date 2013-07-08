@@ -226,7 +226,7 @@ Manage any extra configuration file, service or package with a common prefix
 
 Manage interoperabilty with 3rd party modules resources
 
-# [*class_dependency*]
+# [*dependency_class*]
 #   String. Default: stdmod::dependency
 #   Name of a class that contains resources needed by this module but provided
 #   by external modules. You may leave the default value to keep the
@@ -239,7 +239,7 @@ Manage interoperabilty with 3rd party modules resources
 
 Add extra custom resources related to the class or define
 
-# [*class_my*]
+# [*my_class*]
 #   String. Default undef.
 #   Name of a custom class to autoload to manage module's customizations
 #   If defined, stdmod class will automatically "include $my_class"
@@ -280,7 +280,7 @@ Manage alternative installation options
 #
 
 Manage monitoring
-# [*class_monitor*]
+# [*monitor_class*]
 
 # [*monitor*]
 #   Set to 'true' to enable monitoring of the services provided by the module
@@ -308,7 +308,7 @@ Manage monitoring
 
 
 Manage firewalling
-# [*class_firewall*]
+# [*firewall_class*]
 #
 # [*firewall*]
 #   Set to 'true' to enable firewalling of the services provided by the module

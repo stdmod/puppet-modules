@@ -114,10 +114,10 @@ hba_file_template
 hba_file_*
 
 ## Reference to internal classes that can be substituted
-class_dependency
-class_my
-class_monitor
-class_firewall
+dependency_class
+my_class
+monitor_class
+firewall_class
 
 resources_hash
 
