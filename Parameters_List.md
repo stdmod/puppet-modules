@@ -8,10 +8,8 @@ A Standard Module is not required to have all of them, but if some parameters
 are provided that offer the same function, they should be called like these.
 
 Please comment:
-- If the parameter make sense for you
-- Your suggested name
-
-+1 for the choices you agree with
+- +1 if the parameter makes sense for you
+- Eventually an alternative name
 
 If you want to provide a totally alternative list of names, submit it (on separated file) as a PR.
 
@@ -23,13 +21,13 @@ Generally no special prefix is needed for a class or define main configuration f
 
 For additional resources a prefix is used. For common alternative resources naming standard are set too.
 
-The are some exceptions to the plain [prefix_]resource_parameter pattern that should be evaluated with care.
+There are some exceptions to the plain [prefix_]resource_parameter pattern that have to be defined with care.
 
 ```
 ## General parameters
 ensure (enable?)
-audit
-noop
+audit (audits? - Is this needed?)
+noop (noops? - needed?)
 version (package_version?)
 
 ## Package and installation management
@@ -80,12 +78,17 @@ dir_*
 home_dir
 home_dir_*
 data_dir
+data_dir_*
 log_dir
-log_dir
+log_dir_*
 bin_dir
+bin_dir_*
 lib_dir
+lib_dir_*
 tmp_dir
+tmp_dir_*
 confd_dir
+confd_dir_*
 
 ## Reference to common files
 log_file
@@ -119,15 +122,19 @@ my_class
 monitor_class
 firewall_class
 
+## Hash of resources to pass to create_resource
 resources_hash
 
 ## Installations methods
 install
 install_url
+install_base_url
 install_source
 install_destination
-install_pre_command
-install_post_command
+install_pre_exec
+install_pre_exec_*
+install_post_exec
+install_post_exec_*
 
 install_script_file
 install_script_file_*
@@ -147,7 +154,6 @@ monitor_service
 monitor_config_hash
 
 ## Firewalling
-class_firewall
 firewall
 firewall_src
 firewall_dst
