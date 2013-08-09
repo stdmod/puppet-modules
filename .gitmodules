@@ -1,0 +1,12 @@
+[submodule "modules/elasticsearch"]
+	path = modules/elasticsearch
+	url = https://github.com/stdmod/puppet-elasticsearch
+[submodule "modules/openssh"]
+	path = modules/openssh
+	url = https://github.com/stdmod/puppet-openssh
+[submodule "modules/kibana"]
+	path = modules/kibana
+	url = https://github.com/example42/puppet-kibana
+[submodule "modules/wget"]
+	path = modules/wget
+	url = https://github.com/stdmod/puppet-wget
