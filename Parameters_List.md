@@ -85,7 +85,7 @@ server_package_*
 
 ### Services management
 ```
-service (service_name?)
+service (service_name?) (1)
 service_ensure
 service_enable
 service_subscribe
@@ -105,7 +105,7 @@ init_options_file_options_hash
 
 ### Configuration files management
 ```
-file (file_path?)
+file (file_path?) (1)
 file_source
 file_template
 file_content
@@ -224,7 +224,7 @@ firewall_protocol
 
 ### Exec parameters (for defines)
 ```
-exec (exec_command?)
+exec (exec_command?) (1)
 exec_environment
 exec_path
 exec_*
@@ -237,7 +237,7 @@ exec_options_hash
 When a module requires a dedicated user, a module .
 
 ```
-user
+user (user_name?) (1)
 user_uid
 user_gid
 user_*
@@ -249,6 +249,8 @@ user_*
 (1) - For the parameter that apply to the namevar attribute of the relative resource there are 2 (both sensible) alternatives:
 
   a) Use the short form (ie: package, service, [config_]file…)
-  
+
   b) Use the normal expanded form (ie: package_name, service_name, [config_]file_path, exec_command …)
+
+Which one?
 
