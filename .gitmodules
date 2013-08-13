@@ -10,3 +10,6 @@
 [submodule "modules/wget"]
 	path = modules/wget
 	url = https://github.com/stdmod/puppet-wget
+[submodule "modules/redis"]
+	path = modules/redis
+	url = https://github.com/stdmod/puppet-redis
