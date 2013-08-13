@@ -61,8 +61,6 @@ More generally, in defines, the shorter version is preferred (for the single or 
 ### General parameters
 ```
 ensure (enable?) 
-audit (audits? - Is this needed?)
-noop (noops? - needed?)
 version (package_version?)
 ```
 
@@ -105,14 +103,14 @@ init_options_file_options_hash
 
 ### Configuration files management
 ```
-file (file_path?) (1)
-file_source
-file_template
+file (file_path? config_file? config?) (1)
+file_source (source? config_file_source? config_source?)
+file_template (template? config_file_template? config_template?...)
 file_content
 file_*
 file_options_hash
 
-dir (dir_path?)
+dir (dir_path? config_dir?)
 dir_source
 dir_recurse
 dir_purge
@@ -209,7 +207,7 @@ monitor_config_hash
 ```
 
 ### Firewalling
-Firewalling can be managed with a custom $monitor_class. 
+Firewalling can be managed with a custom $monitor_class.
 A default a local module::firewall class may be provided but should be disabled by default.
 To enable set: firewall => true
 
@@ -232,6 +230,15 @@ exec_*
 exec_options_hash
 ```
 
+### File parameters (for conf define)
+```
+path
+source
+template
+content
+mode
+owner
+```
 
 ### Users management
 When a module requires a dedicated user, a module .
