@@ -60,7 +60,7 @@ More generally, in defines, the shorter version is preferred (for the single or 
 
 ### General parameters
 ```
-ensure (enable?) 
+ensure (enable?)
 version (package_version?)
 ```
 
@@ -192,31 +192,19 @@ install_response_file_*
 ### Monitoring
 Monitoring can be managed with a custom $monitor_class. 
 A default a local module::monitor class may be provided but should be disabled by default.
-To enable set: monitor => true 
 
 ```
-monitor
-monitor_tool
-monitor_host
-monitor_port
-monitor_protocol
-monitor_url
-monitor_process
-monitor_service
-monitor_config_hash
+monitor_class
+monitor_options_hash
 ```
 
 ### Firewalling
 Firewalling can be managed with a custom $monitor_class.
 A default a local module::firewall class may be provided but should be disabled by default.
-To enable set: firewall => true
 
  ```
-firewall
-firewall_src
-firewall_dst
-firewall_port
-firewall_protocol
+firewall_class
+firewall_options_hash
 ```
 
 
