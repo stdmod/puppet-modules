@@ -8,7 +8,27 @@ They are not supposed to enforce any module's design logic, so alternative optio
 A Standard Module is not required to have all of the names and variables proposed here, but if some parameters and class names are provided that offer the same function, they should be called as proposed in these conventions.
 
 ## Modules names and structure
-A module has the **name of the managed application**, system function or resource it manages. In case of doubt, already established namings and common sense are the rule.
+A module has the **name of the managed application**, system function or resource it manages.
+
+Using the **package name** as module name is not a good practice as package names differ among distributions, so a **common name** should be preferred instead.
+
+Example:
+
+Bad naming:
+
+```puppet
+bind9::params
+postgresql-8::service
+mysql5::package
+```
+Good naming:
+
+```puppet
+bind::params
+postgresql::service
+mysql::package
+```
+In case of doubt, already established namings and common sense are the rule.
 
 When a module has subclasses, current standard de-facto names apply:
 
@@ -58,7 +78,14 @@ bacula::director::package
 bacula::director::service
 bacula::director::config
 ```
+being the latter the preferred naming option:
 
+```puppet
+bacula::director::package
+bacula::client::service
+bacula::storage::config
+bacula::console::package
+```
 ## Parameters for classes and defines 
 A module may have many different parameters, related to the specific application it manages, but in order to comply with *stdmod* guides, some parameters should have a common naming among modules.
 
@@ -66,11 +93,12 @@ Here are considered **only common parameters** that might be used in any module.
 
 The general **[prefix_]resource_attribute** pattern is followed, to map consistently class parameters with resources attributes.
 
-Generally no special prefix is needed for a class or define main configuration file, package or service (ie: **package_ensure** not main_package_ensure).
+The use of a prefix should be avoided for classes or defines that manage a single resource main configuration file, package or service (ie: **package_ensure** is preferred instead of main_package_ensure).
 
-For additional resources a prefix is used. (ie: **client_package**, **server_package**)
+For additional resources a prefix is used denoting the resource itself (ie: **client_package**, **server_package**).
 
-If there are parameters in subclasses (as the ones defined before) omonimous resource names are removed.
+If there are parameters as the ones defined before in subclasses or defines, omonimous resource names are removed.
+
 For example, a module can expose parameters in the main class like :
 
 ```
@@ -212,8 +240,10 @@ install_source
 install_destination
 install_pre_exec
 install_pre_exec_*
+install_pre_tmpdir
 install_post_exec
 install_post_exec_*
+
 
 install_script_file
 install_script_file_*
