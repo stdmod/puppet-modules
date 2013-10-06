@@ -1,16 +1,14 @@
 # Modules Naming Standards
 DRAFT v. 0.0.2
 
-This document sumups and proposes naming conventions for Puppet modules.
+This document sums up and proposes naming conventions for Puppet modules.
 
-They are not supposed to enforce any module's design logic, so alternative options and common patterns are outlined for different modules' structure and functions.
+They are not supposed to enforce any module's design logic, so alternative options and common patterns are outlined for different modules' structure and functionallity.
  
-A Standard Module is not required to have all of the proposed names, but if some parameters and class names are provided that offer the same function, they should be called like the one proposed by these conventions.
+A Standard Module is not required to have all of the names and variables proposed here, but if some parameters and class names are provided that offer the same function, they should be called as proposed in these conventions.
 
 ## Modules names and structure
-A module has the **name of the managed application**, system function or resource.
-
-In case of doubt, established namings and common sense are rule.
+A module has the **name of the managed application**, system function or resource it manages. In case of doubt, already established namings and common sense are the rule.
 
 When a module has subclasses, current standard de-facto names apply:
 
@@ -20,14 +18,49 @@ When a module has subclasses, current standard de-facto names apply:
 
 **class::server** - Manages the server installation.
 
-**class::install** (*class::package?*) - Manages only the installation of 'class' 
+**class::package* - Manages only the installation of 'class' package
 
 **class::service** - Manages only the service of 'class'
 
 **class::config** - Manages the configuration of 'class'
 
+Example:
+
+```puppet
+postfix::params
+postfix::client
+postfix::server
+postfix::package
+postfix::service
+postfix::config
+```
+In the cases that 'class' has different sub-applications that can be configured separatedly or different daemons for each of its parts, subdirectories and subclass should be used to represent each part.
+
+Example:
+
+```puppet
+bacula::params
+bacula::config
+```
+For the server application (bacula-director):
+
+```puppet
+bacula::server
+bacula::server::package
+bacula::server::service
+bacula::server::config
+```
+or
+
+```puppet
+bacula::director
+bacula::director::package
+bacula::director::service
+bacula::director::config
+```
+
 ## Parameters for classes and defines 
-A module may have many different parameters, related to the specific application it manages.
+A module may have many different parameters, related to the specific application it manages, but in order to comply with *stdmod* guides, some parameters should have a common naming among modules.
 
 Here are considered **only common parameters** that might be used in any module.
 
