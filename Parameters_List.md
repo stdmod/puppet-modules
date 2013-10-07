@@ -101,7 +101,7 @@ If there are parameters as the ones defined before in subclasses or defines, omo
 
 For example, a module can expose parameters in the main class like :
 
-```
+```puppet
 class openssh (
   $service_ensure = disabled,
   $service_enable = false,
@@ -110,7 +110,7 @@ class openssh (
 ```
 or/and have them in short form, without resource name, in the relevant subclass: 
 
-```
+```puppet
 class openssh::service (
   $ensure = disabled,
   $enable = false,
@@ -118,6 +118,44 @@ class openssh::service (
 ```
 
 More generally, in defines, the shorter version is preferred (for the single or the main resource managed by the define, for other resources standard names with prefixes apply).
+
+### Variables validation and sanitation
+
+Variables should be validated and sanitized whenever possible, taking in account these guide lines:
+
+* If a variable has a finite number of possible values, the passed value should be checked against
+  this list, or an error should be raised.
+* The sanitized value should be stored in a variabled prefixed with *bool_* plus the name
+  of the original variable when sanitizing booleans. Ie.:
+
+```puppet
+$bool_listen = any2bool($listen)
+```
+
+* The sanitized value should be stored in a variabled prefixed with *real_* plus the name
+  of the original variable when sanitizing variables with any number of known options. Ie:
+
+
+```puppet
+$real_version = $postgresql::version ? {
+  '' => $postgresql::bool_use_postgresql_repo ? {
+    true  => '9.2',
+    false => $::operatingsystem ? {
+...
+
+```
+
+* The sanitized value should be stored in a variabled prefixed with *manage_* plus the name
+  of the original variable when sanitizing variables affecting control of resources. Ie:
+
+
+```puppet
+$manage_package = $postgresql::bool_absent ? {
+  true  => 'absent',
+  false => 'present',
+}
+
+```
 
 ### General parameters
 ```
