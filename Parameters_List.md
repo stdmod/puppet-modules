@@ -202,18 +202,18 @@ init_options_file_options_hash
 
 ### Configuration files management
 ```
-file (file_path? config_file? config?) (1)
-file_source (source? config_file_source? config_source?)
-file_template (template? config_file_template? config_template?...)
-file_content
-file_*
-file_options_hash
+config_file (file_path? config_file? config?) (1)
+config_file_source (source? config_file_source? config_source?)
+config_file_template (template? config_file_template? config_template?...)
+config_file_content
+config_file_*
+config_file_options_hash
 
-dir (dir_path? config_dir?)
-dir_source
-dir_recurse
-dir_purge
-dir_*
+config_dir (dir_path? config_dir?)
+config_dir_source
+config_dir_recurse
+config_dir_purge
+config_dir_*
 ```
 
 ### Reference to common directories
@@ -349,4 +349,3 @@ user_*
   b) Use the normal expanded form (ie: package_name, service_name, [config_]file_path, exec_command …)
 
 Which one?
-
