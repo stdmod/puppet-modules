@@ -334,8 +334,8 @@ When a module requires a dedicated user, a module .
 
 ```
 user_name
-user_owner
-user_group
+user_uid
+user_gid
 user_*
 
 ```
