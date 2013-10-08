@@ -1,5 +1,5 @@
 # Modules Naming Standards
-DRAFT v. 0.0.2
+DRAFT v. 0.0.3
 
 This document sums up and proposes naming conventions for Puppet modules.
 
@@ -19,14 +19,14 @@ Bad naming:
 ```puppet
 bind9::params
 postgresql-8::service
-mysql5::package
+mysql5::install
 ```
 Good naming:
 
 ```puppet
 bind::params
 postgresql::service
-mysql::package
+mysql::install
 ```
 In case of doubt, already established namings and common sense are the rule.
 
@@ -38,7 +38,7 @@ When a module has subclasses, current standard de-facto names apply:
 
 **class::server** - Manages the server installation.
 
-**class::package* - Manages only the installation of 'class' package
+**class::install* - Manages only the installation of 'class'
 
 **class::service** - Manages only the service of 'class'
 
@@ -50,11 +50,11 @@ Example:
 postfix::params
 postfix::client
 postfix::server
-postfix::package
+postfix::install
 postfix::service
 postfix::config
 ```
-In the cases that 'class' has different sub-applications that can be configured separatedly or different daemons for each of its parts, subdirectories and subclass should be used to represent each part.
+In the cases that 'class' has different sub-applications that can be configured separatedly or different daemons for each of its parts, subdirectories and subclass might be used to represent each part.
 
 Example:
 
@@ -66,7 +66,7 @@ For the server application (bacula-director):
 
 ```puppet
 bacula::server
-bacula::server::package
+bacula::server::install
 bacula::server::service
 bacula::server::config
 ```
@@ -74,17 +74,17 @@ or
 
 ```puppet
 bacula::director
-bacula::director::package
+bacula::director::install
 bacula::director::service
 bacula::director::config
 ```
 being the latter the preferred naming option:
 
 ```puppet
-bacula::director::package
+bacula::director::install
 bacula::client::service
 bacula::storage::config
-bacula::console::package
+bacula::console::install
 ```
 ## Parameters for classes and defines 
 A module may have many different parameters, related to the specific application it manages, but in order to comply with *stdmod* guides, some parameters should have a common naming among modules.
@@ -165,7 +165,7 @@ version (package_version?)
 
 ### Package and installation management
 ```
-package (package_name?) (1)
+package_name
 package_ensure
 package_provider
 package_*
@@ -182,7 +182,7 @@ server_package_*
 
 ### Services management
 ```
-service (service_name?) (1)
+service_name
 service_ensure
 service_enable
 service_subscribe
@@ -202,14 +202,14 @@ init_options_file_options_hash
 
 ### Configuration files management
 ```
-config_file (file_path? config_file? config?) (1)
-config_file_source (source? config_file_source? config_source?)
-config_file_template (template? config_file_template? config_template?...)
+config_file_name
+config_file_source
+config_file_template
 config_file_content
 config_file_*
 config_file_options_hash
 
-config_dir (dir_path? config_dir?)
+config_dir_path
 config_dir_source
 config_dir_recurse
 config_dir_purge
@@ -311,7 +311,7 @@ firewall_options_hash
 
 ### Exec parameters (for defines)
 ```
-exec (exec_command?) (1)
+exec_command
 exec_environment
 exec_path
 exec_*
@@ -333,19 +333,9 @@ owner
 When a module requires a dedicated user, a module .
 
 ```
-user (user_name?) (1)
+user_name
 user_uid
 user_gid
 user_*
 
 ```
-
-
-#### Notes
-(1) - For the parameter that apply to the namevar attribute of the relative resource there are 2 (both sensible) alternatives:
-
-  a) Use the short form (ie: package, service, [config_]file…)
-
-  b) Use the normal expanded form (ie: package_name, service_name, [config_]file_path, exec_command …)
-
-Which one?
