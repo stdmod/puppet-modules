@@ -38,7 +38,7 @@ When a module has subclasses, current standard de-facto names apply:
 
 **class::server** - Manages the server installation.
 
-**class::install* - Manages only the installation of 'class'
+**class::install** - Manages only the installation of 'class'
 
 **class::service** - Manages only the service of 'class'
 
@@ -157,16 +157,11 @@ $manage_package = $postgresql::bool_absent ? {
 
 ```
 
-### General parameters
-```
-ensure (enable?)
-version (package_version?)
-```
-
 ### Package and installation management
 ```
 package_name
-package_ensure
+package_ensure # (instead of $ensure?)
+package_version # (instead of $version?)
 package_provider
 package_*
 
@@ -287,6 +282,16 @@ install_script_file
 install_script_file_*
 install_response_file
 install_response_file_*
+```
+
+
+### Reference to common resources for monitoring / firewalling
+```
+tcp_port
+udp_port
+process_name
+process_user
+process_group
 ```
 
 
