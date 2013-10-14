@@ -14,3 +14,10 @@ https://groups.google.com/forum/#!topic/puppet-users/fV4sZu0W998
 https://docs.google.com/a/lab42.it/document/d/1D4OqEI5iuGJe63ODU91N6rnFKcxVAg1sAWbaQrGBlWA
 
 
+If you want to create test modules based on these naming standards check:
+
+https://github.com/stdmod/puppet-module-skeleton
+
+NOTE: The skeleton will change according to stdmod version.
+
+

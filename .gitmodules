@@ -13,3 +13,6 @@
 [submodule "modules/redis"]
 	path = modules/redis
 	url = https://github.com/stdmod/puppet-redis
+[submodule "puppet-module-skeleton"]
+	path = puppet-module-skeleton
+	url = https://github.com/stdmod/puppet-module-skeleton
