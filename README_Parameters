@@ -1,5 +1,4 @@
 Naming Standards for Parameters/Hiera names
-DRAFT 0.0.1
 
 Usage patterns: With a class declaration
 class { $module:
