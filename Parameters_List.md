@@ -91,7 +91,21 @@ bacula::client::service
 bacula::storage::config
 bacula::console::install
 ```
-## Parameters for classes and defines 
+
+### Common defines
+The following defines are reserved for common use cases:
+module::conf     # Define that manages any configuration file for the module
+module::instance # Define that manages single different instances of the module's application
+
+Example:
+```puppet
+tomcat::instance
+memcached::instance
+postfix::conf
+```
+
+
+## Parameters for classes and defines
 A module may have many different parameters, related to the specific application it manages, but in order to comply with *stdmod* guides, some parameters should have a common naming among modules.
 
 Here are considered **only common parameters** that might be used in any module.
@@ -339,6 +353,14 @@ content
 mode
 owner
 ```
+
+### Parameters for instance define 
+```
+config_file_template
+init_file_template
+process_user (???)
+```
+
 
 ### Users management
 When a module requires a dedicated user, a module .
