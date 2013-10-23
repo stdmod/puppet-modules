@@ -179,8 +179,7 @@ $manage_package = $postgresql::bool_absent ? {
 ### Package and installation management
 ```
 package_name
-package_ensure # (instead of $ensure?)
-package_version # (instead of $version?)
+package_ensure
 package_provider
 package_*
 
