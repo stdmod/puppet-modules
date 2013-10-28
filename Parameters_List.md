@@ -1,5 +1,5 @@
 # Modules Naming Standards
-DRAFT v. 0.0.3
+DRAFT v. 0.9.0
 
 This document sums up and proposes naming conventions for Puppet modules.
 
