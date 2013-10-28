@@ -94,7 +94,7 @@ bacula::console::install
 
 ### Common defines
 The following defines are reserved for common use cases:
-module::conf     # Define that manages any configuration file for the module
+module::conf     # Define to manage secondary configuration files for the module
 module::instance # Define that manages single different instances of the module's application
 
 Example:
@@ -327,7 +327,7 @@ monitor_options_hash
 Firewalling can be managed with a custom $monitor_class.
 A default a local module::firewall class may be provided but should be disabled by default.
 
- ```
+```
 firewall_class
 firewall_options_hash
 ```
@@ -357,7 +357,7 @@ owner
 ```
 config_file_template
 init_file_template
-process_user (???)
+user
 ```
 
 
