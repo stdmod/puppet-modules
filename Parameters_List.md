@@ -1,5 +1,5 @@
 # Modules Naming Standards
-DRAFT v. 0.0.3
+DRAFT v. 0.9.0
 
 This document sums up and proposes naming conventions for Puppet modules.
 
@@ -30,7 +30,9 @@ mysql::install
 ```
 In case of doubt, already established namings and common sense are the rule.
 
-When a module has subclasses, current standard de-facto names apply:
+Resources can be managed in the main class and/or in subclasses.
+
+When a module has subclasses current standard de-facto names apply:
 
 **class::params** - (May) contain modules internal parameters and defaults
 
@@ -38,21 +40,24 @@ When a module has subclasses, current standard de-facto names apply:
 
 **class::server** - Manages the server installation.
 
-**class::install* - Manages only the installation of 'class'
+**class::install** - Manages only the installation of 'class'
 
 **class::service** - Manages only the service of 'class'
 
 **class::config** - Manages the configuration of 'class'
 
-Example:
+**class::repo** - Manages eventual extra repos needed for the class
+
+Examples:
 
 ```puppet
 postfix::params
-postfix::client
-postfix::server
-postfix::install
+openssh::client
+openssh::server
+elasticsearch::install
 postfix::service
 postfix::config
+mongodb::repo
 ```
 In the cases that 'class' has different sub-applications that can be configured separatedly or different daemons for each of its parts, subdirectories and subclass might be used to represent each part.
 
@@ -86,7 +91,21 @@ bacula::client::service
 bacula::storage::config
 bacula::console::install
 ```
-## Parameters for classes and defines 
+
+### Common defines
+The following defines are reserved for common use cases:
+module::conf     # Define to manage secondary configuration files for the module
+module::instance # Define that manages single different instances of the module's application
+
+Example:
+```puppet
+tomcat::instance
+memcached::instance
+postfix::conf
+```
+
+
+## Parameters for classes and defines
 A module may have many different parameters, related to the specific application it manages, but in order to comply with *stdmod* guides, some parameters should have a common naming among modules.
 
 Here are considered **only common parameters** that might be used in any module.
@@ -155,12 +174,6 @@ $manage_package = $postgresql::bool_absent ? {
   false => 'present',
 }
 
-```
-
-### General parameters
-```
-ensure (enable?)
-version (package_version?)
 ```
 
 ### Package and installation management
@@ -262,6 +275,7 @@ install_class
 my_class
 monitor_class
 firewall_class
+repo_class
 ```
 
 ### Hash of resources to pass to create_resource
@@ -290,6 +304,16 @@ install_response_file_*
 ```
 
 
+### Reference to common resources for monitoring / firewalling
+```
+tcp_port
+udp_port
+process_name
+process_user
+process_group
+```
+
+
 ### Monitoring
 Monitoring can be managed with a custom $monitor_class. 
 A default a local module::monitor class may be provided but should be disabled by default.
@@ -303,7 +327,7 @@ monitor_options_hash
 Firewalling can be managed with a custom $monitor_class.
 A default a local module::firewall class may be provided but should be disabled by default.
 
- ```
+```
 firewall_class
 firewall_options_hash
 ```
@@ -328,6 +352,14 @@ content
 mode
 owner
 ```
+
+### Parameters for instance define 
+```
+config_file_template
+init_file_template
+user
+```
+
 
 ### Users management
 When a module requires a dedicated user, a module .
