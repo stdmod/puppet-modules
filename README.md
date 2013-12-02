@@ -21,3 +21,7 @@ https://github.com/stdmod/puppet-module-skeleton
 NOTE: The skeleton will change according to stdmod version.
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/stdmod/puppet-modules/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
